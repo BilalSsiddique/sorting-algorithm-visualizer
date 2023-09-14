@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { data } from "../utils/data";
+import { useNavigate } from "react-router-dom";
 
 const useSort = () => {
   const [sortedData, setSortedData] = useState(data);
   const [swaps, setSwaps] = useState<number[]>([]);
   const [countIteration, setCountIeration] = useState(0);
 
+  const navigate = useNavigate();
+
   function reset() {
-    setSwaps([]);
-    setCountIeration(0);
-    setSortedData(data);
-    window.location.href = "/bubble-sort";
+    navigate(0);
   }
 
   async function bubbleSort() {
@@ -33,6 +33,7 @@ const useSort = () => {
           setSwaps([]);
         }
       }
+
       if (!swap) {
         break;
       }
